@@ -1,0 +1,187 @@
+@charset "UTF-8";
+.basket-title {
+	font-size: 20px;
+}
+
+.bg-gray{
+	background-color: lightgrey;
+}
+
+.center{
+	text-align: center;
+	padding-top: 1px;
+}
+
+.basket{
+	background-color: white;
+	padding: 20px 30px;
+	width: 1300px;
+	margin: 1px auto;
+	display: inline-block;
+}
+.basket-item{
+	-webkit-border-top-right-radius: 1em;
+	-webkit-border-top-left-radius: 1em;
+}
+.basket-group{
+	padding-left: 10px;
+}
+.basket-order{
+	-webkit-border-bottom-right-radius: 1em;
+	-webkit-border-bottom-left-radius: 1em;
+	background-color: #876b52;
+}
+.basket-order:hover{
+	cursor: pointer;
+}
+.basket-all{
+	height: 50px;
+	align-items: center;
+	text-align: left;
+	border-radius: 0.5em;
+}
+.basket-center-all{
+	position: relative;
+	top: -9px;
+}
+label{
+	font-size: 20px;
+	margin-left: 5px;
+	
+}
+
+
+input[type="checkbox"]{
+	transform: scale(2);
+}
+
+hr{
+	border: 1px solid;
+	margin: 10px auto;
+}
+#among-items-hr{
+	border: 1px solid #eeeeee;
+}
+
+.total-order-button{
+	background-color: white;
+	line-height: 3.4;
+	text-align: center;
+	width: 350px;
+	height: 90px;
+	border-radius: 0.5em;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 28px;
+}
+.order-basket-option{
+	height: 150px;
+	border-radius: 0.5em;
+	display: flex;
+	justify-content: center;
+	margin-top: 100px;
+}
+.order-select{
+	background-color: white;
+	line-height: 4;
+	text-align: center;
+	width: 250px;
+	height: 90px;
+	border-radius: 0.5em;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 24px;
+	float: left;
+	box-shadow: 0px 0px 5px black;
+	margin: 10px;
+}
+
+.selected-option{
+	background-color: #876b52;
+	color: white;
+}
+.order-basket-item{
+	align-items: center;
+	text-align: left;
+	border-radius: 0.5em;
+}
+
+
+.div-dot-option{
+	display: flex;
+	justify-content: center;
+}
+
+.circle-ripple{
+	animation-name: ripple;
+	animation-duration: 2s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	z-index: 1;
+}
+.circle-ripple-blur{
+	animation-name: ripple-blur;
+	animation-duration: 2s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	z-index: 3;
+}
+.circle-ripple-blur2{
+	animation-name: ripple-blur2;
+	animation-duration: 2s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	z-index: 3;
+}
+/* .circle-blur-ripple2{
+	animation-name: ripple;
+	animation-duration: 6s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-delay: -0.5s;
+} */
+
+@keyframes ripple{
+	from{
+		opacity:1;
+		background-color: #876b52;
+		transform: scale(0);
+	}
+	to{
+		opacity:0.1;
+		background-color: #876b52;
+		transform: scale(3);
+	}
+}
+@keyframes ripple-blur{
+	from{
+		opacity:1;
+		background-color: white;
+		transform: scale(0);
+	}
+	to{
+		opacity:1.5;
+		background-color: white;
+		transform: scale(0.78);
+	}
+}
+@keyframes ripple-blur2{
+	from{
+		opacity:2;
+		background-color: #876b52;
+		transform: scale(0.1);
+	}
+	to{
+		opacity:3;
+		background-color: #876b52;
+		transform: scale(0.5);
+	}
+}
+
+table{
+	white-space: nowrap;
+}
+
+.whitetext{
+	color: white; font-weight: bold;
+}

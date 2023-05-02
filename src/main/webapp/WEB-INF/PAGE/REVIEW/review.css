@@ -1,0 +1,340 @@
+@charset "UTF-8";
+
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gowun+Batang&family=Nanum+Myeongjo&display=swap')
+	;
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	height: 100vh;
+	width: 100%;
+}
+
+header {
+	width: 100%;
+	height: 80px;
+	position: fixed;
+	background: rgba(135, 107, 82, 1);
+	z-index: 10;
+}	
+
+nav {
+	overflow: hidden;
+	position: fixed;
+	transform: translateX(-100px);
+	top: 110px;
+	height: 100%;
+	width: 180px;
+	transition: all 800ms cubic-bezier(.8, 0, .33, 1);
+	border-radius: 0 150px 150px 0;
+	z-index: 50;
+}
+
+nav.nav-open {
+	transform: translateX(0px);
+	border-radius: 0 150px 150px 0;
+	background: rgba(135, 90, 82, 0.8);
+}
+
+nav .menu-btn {
+	position: absolute;
+	top: 50%;
+	right: 5%;
+	padding: 0;
+	width: 30px;
+	cursor: pointer;
+	z-index: 5;
+}
+
+nav .menu-btn .line {
+	padding: 0;
+	width: 30px;
+	background: black;
+	height: 2px;
+	margin: 5px 0;
+	transition: all 700ms cubic-bezier(.9, 0, .33, 1);
+}
+
+nav .menu-btn .line.line--1 {
+	width: 28px;
+	transform: rotate(0) translateY(0);
+}
+
+nav .menu-btn .line.line--1.line-cross {
+	width: 30px;
+	transform: rotate(45deg) translateY(10px);
+	background: rgba(0, 0, 0, 0.6);
+}
+
+nav .menu-btn .line.line--2 {
+	width: 28px;
+	transform: translateX(0);
+}
+
+nav .menu-btn .line.line--2.line-fade-out {
+	width: 28px;
+	transform: translate(30px);
+	opacity: 0;
+}
+
+nav .menu-btn .line.line--3 {
+	width: 28px;
+	transform: rotate(0) translateY(0);
+}
+
+nav .menu-btn .line.line--3.line-cross {
+	width: 30px;
+	transform: rotate(-45deg) translateY(-10px);
+	background: rgba(0, 0, 0, 0.6);
+}
+
+nav .nav-links {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	/* align-items: left; */
+	/* align-content: space-between; */
+	justify-content: center;
+	transform: translateX(-100px);
+	opacity: 0;
+	transition: all 900ms cubic-bezier(.9, 0, .33, 1);
+}
+
+.nav-a {
+	display: flex;
+	flex-direction: column;
+	align-content: space-between;
+}
+
+nav .nav-links.fade-in {
+	opacity: 1;
+	transform: translateX(0px);
+}
+
+nav .nav-links .link {
+	margin: 10px 0;
+	text-decoration: none;
+	font-family: sans-serif;
+	color: rgba(0, 0, 0, 0.9);
+	font-weight: 300;
+	font-size: 15px;
+	transition: all 300ms cubic-bezier(.9, 0, .33, 1);
+}
+
+nav .nav-links .link:hover {
+	color: rgba(0, 0, 0, .5);
+}
+
+a {
+	text-decoration: none;
+	margin: 0 20px;
+	color: #2a2c30;
+	font-size: 16px;
+	transition: all 300ms ease;
+}
+
+a:hover {
+	color: #876b52;
+}
+
+section {
+	position: relative;
+	text-align: center;
+	z-index: 3; /* 스크롤 될 때 header 가리지 않게 */
+}
+/* .section_div {
+   position: relative;
+   padding-top: 200px;
+   text-align: center;
+} */
+#s1 {
+	top: 80px;
+	height: 650px;
+	background-image: url("CherryBlossom.jpg");
+}
+
+#s1_box {
+	position: relative;
+	top: 35%;
+}
+
+#s2 {
+	top: 150px;
+	height: 500px;
+}
+
+#s3 {
+	height: 400px;
+}
+
+#intro {
+	font-family: 'Hahmlet', serif;
+	color: black;
+	font-size: xx-large;
+	padding-bottom: 40px;
+}
+
+#search_bar {
+	padding-left: 8px;
+	border-radius: 8px;
+	border-color: #876b52;
+	height: 50px;
+	width: 500px;
+}
+
+.text_box {
+	border: 3px solid #876b52;
+	border-radius: 8px;
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+}
+
+.text_box p {
+	font-family: 'Hahmlet', serif;
+	padding-top: 23px;
+}
+
+footer {
+	background-color: #876b52;
+	height: 70px;
+	padding: 20px;
+	text-align: center;
+	position: relative;
+	bottom: 0;
+}
+
+#up_icon {
+	position: fixed;
+	bottom: 15px;
+	right: 15px;
+}
+
+#up_img {
+	width: 24px;
+	cursor: pointer;
+}
+
+#reviewbook {
+	top: 180px;
+	position: absolute;
+	margin-left: 15%;
+	margin-right: 15%;
+	width: 70%;
+	height: 25%;
+	background-color: blue;
+}
+
+#reviewinfo {
+	margin-left: 180px;
+	position: relative;
+	height: 100%;
+	top: -22px;
+	background-color: skyblue;
+}
+
+#reviewbook2 {
+	top: 180px;
+	position: absolute;
+	top: 55%;
+	margin-left: 15%;
+	width: 70%;
+	height: 25%;
+	background-color: red;
+}
+
+#reviewinfo2 {
+	margin-left: 180px;
+	position: relative;
+	height: 100%;
+	top: -22px;
+	background-color: skyblue;
+}
+
+.mypage_banner {
+	background-image:
+		url("https://cdn.pixabay.com/photo/2012/04/13/15/04/library-32746_960_720.png");
+	width: 100%;
+	height: 350px;
+	background-size: contain;
+	position: relative;
+    top: -80px;
+}
+
+.my_help {
+	position: relative;
+	margin: 0 auto;
+	top: 180px;
+	background-color: white;
+	width: 200px;
+	font-family: 'Black Han Sans', sans-serif;
+	font-family: 'Gowun Batang', serif;
+	font-family: 'Nanum Myeongjo', serif;
+}
+
+.my_help_bar{
+  position: relative;
+    top: 350px;
+    left: 15%;
+	background-color: #876b52;
+	width: 70%;
+	height: 25px;
+	font-family: 'Black Han Sans', sans-serif;
+	font-family: 'Gowun Batang', serif;
+	font-family: 'Nanum Myeongjo', serif;
+}
+.my_help_bar > p{
+	 text-align : center;
+	  padding : 4px 0;	
+}
+
+body {
+    margin: 0px;
+    padding: 0;
+    background: #876b52;
+}
+
+.review_book{
+    margin: 0 auto;
+    background-color: white;
+    width: 500px;
+    height: 700px;
+	border: 1px solid black;
+    border-top-left-radius: 100px;
+    overflow: hidden;
+}
+
+.review_book_img{
+    margin: 0 auto;
+    width: 100%;
+    height: 80%;
+	border: 1px solid black;
+	background-image:url("https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788993928341.jpg");
+	background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-top-left-radius: 100px;
+    z-index: 9;
+    display:flex
+    
+}
+
+ button.bt1 {
+  position:absolute;
+  top: 50%;
+  left: 64%;
+  width: 30px;
+  height: 30px;
+  
+ 
+}
