@@ -13,69 +13,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<style type="text/css">
+
+</style>
 </head>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script>
- 
-$(function(){
- 
-    //댓글 수정 버튼
-    $("#btn_reply_Update").click(function(){
-    if(confirm("수정 하시겠습니까?")){
-        
-    //수정하는데 필요한 정보들, 댓글 번호, 글 내용, 작성자 아이디, 게시글 번호를 변수에 저장한다.
-        var rno = $("#rno").val();
-        var r_content = $("textarea#r_content").text();
-        var user_id = $("#user_id").val();
-        var member_bno = $("#member_bno").val();
-        
-    //게시글 세부 페이지로 포워딩을 하기위해 페이지 관련 값들을 변수에 저장해서 컨트롤러로 보낸다.
-        var curPage = $("#curPage").val();
-        var search_option = $("#search_option").val();
-        var keyword = $("#keyword").val();
-        
-        //페이지 관련 값들과 댓글 수정에 필요한 값들을 url로 전송한다.
-        document.form1.action="reply_update.do?rno="+rno+"&r_content="+encodeURI(r_content)+"&user_id="+user_id+"&member_bno="+member_bno+"&curPage="+curPage+"&search_option="+search_option+"&keyword="+keyword;
-        document.form1.submit();
-        
-        
-        alert("댓글이 수정되었습니다.")
-                }
-        });
- 
-    
-    //댓글 삭제 버튼
-    $("#btn_reply_Delete").click(function(){
-        
-        if(confirm("삭제 하시겠습니까?")){
-        
-        //댓글 삭제를 하기위해 댓글 번호, 글 번호, 댓글 내용, 그리고 게시글 세부 페이지로 포워딩 하기 위해 페이지 관련 값들을 변수에 저장한다.
-            var rno = $("#rno").val();
-            var member_bno = $("#member_bno").val();
-            var content = $("textarea#r_content").text();
-            var curPage = $("#curPage").val();
-            var search_option = $("#search_option").val();
-            var keyword = $("#keyword").val();
-            
-            
-            //url로 삭제에 필요한 변수들을 보낸다.
-            document.form1.action="reply_delete.do?rno="+rno+"&member_bno="+member_bno+"&curPage="+curPage+"&search_option="+search_option+"&keyword="+keyword;
-            
-            document.form1.submit();
-            
-            alert("댓글이 삭제되었습니다.")
-            
-        }
-    });
-});
- 
-</script>
 <body>
 
 	<!-- 상단 header -->
 	<%@ include file="../MAIN/header.jsp"%>
 
-<div class="container">
+<div class="container" >
 	<div class="row">
 		<div class="col-sm-3"></div>
 		<div class="col-sm-6">
@@ -111,23 +58,43 @@ $(function(){
 						</div>
 					</div>
 				</div>
-				<!-- 댓글작성 -->
-				<%-- <div class="card-body">
-					<div class="form-group">
-						<label>댓글 작성</label>
-						<hr />
-						<form:form method="post" >
-						<form:label path="mb_id">작성자 : ${loginUserBean.mb_id}</form:label>
-						<form:textarea path="rp_content" class="form-control" rows="3" style="resize:none"/>
-						</form:form>
+				<!-- 댓글 -->
+				<hr />
+
+					<div>
+						<c:forEach items="${reply}" var="reply">					
+								<div>
+									<p>${reply.mb_id} | ${reply.rp_date}</p>
+									<p>${reply.rp_content }</p>
+								</div>
+								<p>
+									<a href="">수정</a> &nbsp; <a href="">삭제</a>
+								</p>
+						</c:forEach>
+						<c:if test="${board_id == 2 || board_id == 3 }">
+						<form method="post" action="${root }NBQA/replyWrite">
+
+							<p>
+								<label>작성자</label> <input type="text" name="mb_id" value="${loginUserBean.mb_id }">
+				
+							</p>
+							<p>
+								<textarea rows="5" cols="50" name="rp_content"></textarea>
+							</p>
+							<p>
+								<input type="hidden" name="board_id" value="${board_id}">
+								<input type="hidden" name="nbqa_no" value="${nbqa_no}">
+								<button type="submit">댓글 작성</button>
+							</p>
+						</form>
+						</c:if>
 					</div>
-				</div> --%>
-			</div>
+
+				</div>
 		</div>
 		<div class="col-sm-3"></div>
 	</div>
 </div>
-
 
 	<!-- 좌측 슬라이드 메뉴 -->
 	<%@ include file="../MAIN/left_menu.jsp" %>

@@ -16,6 +16,6 @@ public class ReplyBean {
 	private String rp_content;
 	private String rp_date;
 	
-	
+	private int board_id;
 	
 }

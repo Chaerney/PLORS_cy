@@ -25,7 +25,8 @@
 </head>
 <body>
 	<div>
-		<div id="page-box">		 
+		
+		<div id="page-box">		 			
 			<c:forEach var="obj" items="${topMenuList }">						
 				<a class="page" href="${root}NBQA/board?board_id=${obj.board_id }" style="text-decoration: none"><span>${obj.board_name }</span></a>
 			</c:forEach>
@@ -36,12 +37,9 @@
 				<c:otherwise>
 					<a class="page" href="${root}NBQA/application" style="text-decoration: none"><span>도서신청</span></a>	
 				</c:otherwise>
-			</c:choose>
-				<%-- <c:if test="${loginUserBean.mb_ad ==1 }">
-					<a class="page" href="${root}NBQA/application_list_admin" style="text-decoration: none">도서신청내역</a>
-				</c:if>
-				<a class="page" href="${root}NBQA/application" style="text-decoration: none"><span>도서신청</span></a>	 --%>
+			</c:choose>				
 		</div>
+		<h4>${board_name }</h4> <br />
 	</div>
 </body>
 </html>

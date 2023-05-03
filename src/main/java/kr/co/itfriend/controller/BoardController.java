@@ -1,11 +1,19 @@
 package kr.co.itfriend.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,12 +22,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.itfriend.beans.NBQABean;
 import kr.co.itfriend.beans.PageBean;
+import kr.co.itfriend.beans.ReplyBean;
 import kr.co.itfriend.beans.UserBean;
-import kr.co.itfriend.service.ApplicationService;
 import kr.co.itfriend.service.BoardService;
+import kr.co.itfriend.service.ReplyService;
 
 
 @Controller
@@ -28,6 +38,9 @@ public class BoardController {
 
 	@Autowired
 	private BoardService boardService;
+	
+	@Autowired
+	private ReplyService replyService;
 	
 	@Resource(name = "loginUserBean")
 	private UserBean loginUserBean;
@@ -55,7 +68,7 @@ public class BoardController {
 	@GetMapping("/read")
 	public String read(@RequestParam("board_id") int board_id, 
 					   @RequestParam("nbqa_no") int nbqa_no,
-					   @RequestParam(value = "page", defaultValue = "1") int page, Model model) {
+					   @RequestParam(value = "page", defaultValue = "1") int page, Model model) throws Exception {
 				
 		model.addAttribute("board_id", board_id);
 		model.addAttribute("nbqa_no", nbqa_no);
@@ -66,9 +79,16 @@ public class BoardController {
 		model.addAttribute("loginUserBean", loginUserBean);
 		model.addAttribute("page", page);
 		
+		//조회수
 		int nbqa_click = 0;
 		boardService.boardClickUpdate(nbqa_no);
 		model.addAttribute("nbqa_click", nbqa_click);
+		
+		//댓글
+		List<ReplyBean> reply = null;
+		reply = replyService.list(nbqa_no);
+		model.addAttribute("reply", reply);
+		
 		
 		return "NBQA/read";
 	}	
@@ -149,6 +169,11 @@ public class BoardController {
 		
 		return "NBQA/delete";
 	}
+	
+
+	
+	
+	
 	
 	
 	/*

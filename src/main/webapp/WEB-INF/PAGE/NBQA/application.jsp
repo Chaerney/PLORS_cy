@@ -95,7 +95,15 @@ ul {
 		<%@ include file="../NBQA/board_top_menu.jsp"%>
 		
 		<div id="btn_box">
-			<a href="${root }NBQA/bookApplication"><input class="button" type="button" value="신청하기"></a>
+			<c:choose>
+				<c:when test="${loginUserBean.userLogin == false}">
+					<a href="#"><input class="button" type="button" value="신청하기" onclick="cantmove()"></a>
+				</c:when>
+				<c:otherwise>
+					<a href="${root }NBQA/bookApplication"><input class="button" type="button" value="신청하기"></a>
+				</c:otherwise>
+			</c:choose>
+			
 		</div>
 		<div id="bordertop">
 			<div class="text_box">
@@ -153,6 +161,11 @@ ul {
 
 	<!-- 하단 footer -->
 	<%@ include file="../MAIN/footer.jsp" %>
-
+<script type="text/javascript">
+function cantmove() {
+	alert('로그인 후 이용 가능합니다')
+	location.href="${root}MYPAGE/login"
+}
+</script>
 </body>
 </html>

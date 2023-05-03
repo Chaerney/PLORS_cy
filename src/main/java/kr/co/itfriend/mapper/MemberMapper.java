@@ -18,7 +18,7 @@ public interface MemberMapper {
 	@Insert("insert into member(mb_no,mb_name,mb_id,mb_pw,mb_tel,mb_birthday,mb_gender,mb_addr,mb_money,mb_ad) values(no_seq.nextval, #{mb_name}, #{mb_id}, #{mb_pw},#{mb_tel},TO_DATE(#{mb_birthday}),#{mb_gender},#{mb_addr},0,#{mb_ad})")
 	void addUserInfo(UserBean joinUserBean);
 
-	@Select("select mb_no, mb_name, mb_ad "
+	@Select("select mb_no, mb_name, mb_ad, mb_id "
 			+ "from member "
 			+ "where mb_id=#{mb_id} and mb_pw=#{mb_pw}")
 	UserBean getLoginUserInfo(UserBean tempLoginUserBean);

@@ -156,7 +156,8 @@ body, html {
 			<c:if test="${board_id ==1 && loginUserBean.mb_ad ==1 && loginUserBean.userLogin == true  }">
 				<a href="${root }NBQA/write?board_id=${board_id}" class="btn btn-primary">글쓰기</a>
 			</c:if>
-			<c:if test="${board_id ==2 || board_id ==3}">
+ 
+			<c:if test="${(board_id ==2 || board_id ==3) && loginUserBean.userLogin == true}">
 				<a href="${root }NBQA/write?board_id=${board_id}" class="btn btn-primary">글쓰기</a>
 			</c:if>
 		</div>
@@ -169,5 +170,6 @@ body, html {
 	
 	<!-- 하단 footer -->
 	<%@ include file="../MAIN/footer.jsp" %>
+
 </body>
 </html>

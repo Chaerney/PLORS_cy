@@ -22,6 +22,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import kr.co.itfriend.beans.ReplyBean;
 import kr.co.itfriend.beans.UserBean;
 import kr.co.itfriend.interceptor.CheckLoginInterceptor;
 import kr.co.itfriend.interceptor.CheckWriterInterceptor;
@@ -35,6 +36,7 @@ import kr.co.itfriend.mapper.BookRankingMapper;
 import kr.co.itfriend.mapper.LibraryMapper;
 import kr.co.itfriend.mapper.MemberMapper;
 import kr.co.itfriend.mapper.PointMapper;
+import kr.co.itfriend.mapper.ReplyMapper;
 import kr.co.itfriend.mapper.TopMenuMapper;
 import kr.co.itfriend.service.BoardService;
 import kr.co.itfriend.service.TopMenuService;
@@ -178,6 +180,14 @@ public class ServletAppContext implements WebMvcConfigurer {
 	@Bean
 	public MapperFactoryBean<ApplicationMapper> getApplicationMapper(SqlSessionFactory factory) throws Exception{
 	    MapperFactoryBean<ApplicationMapper> factoryBean = new MapperFactoryBean<ApplicationMapper>(ApplicationMapper.class);
+	    factoryBean.setSqlSessionFactory(factory);
+	    return factoryBean;
+	}
+	
+	//reply
+	@Bean
+	public MapperFactoryBean<ReplyMapper> getReplyMapper(SqlSessionFactory factory) throws Exception{
+	    MapperFactoryBean<ReplyMapper> factoryBean = new MapperFactoryBean<ReplyMapper>(ReplyMapper.class);
 	    factoryBean.setSqlSessionFactory(factory);
 	    return factoryBean;
 	}
